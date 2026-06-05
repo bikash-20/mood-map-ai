@@ -1,0 +1,56 @@
+/* src/styles/glass.css */
+/* Glass card base */
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat bubble – AI side */
+.ai-bubble {
+  background: linear-gradient(135deg, rgba(232, 222, 248, 0.8), rgba(208, 240, 232, 0.8));
+  backdrop-filter: blur(8px);
+  border-radius: 24px 24px 24px 8px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Chat bubble – user side */
+.user-bubble {
+  background: #FFFFFF;
+  border-radius: 24px 24px 8px 24px;
+  padding: 12px 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Gossip mode badge */
+.gossip-badge {
+  background: rgba(160, 210, 228, 0.7);
+  backdrop-filter: blur(4px);
+  border-radius: 40px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1E2A3A;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Input field glass */
+.glass-input {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 60px;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: #1E2A3A;
+}
+.glass-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.9);
+}
