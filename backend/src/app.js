@@ -22,8 +22,23 @@ const ALLOWED_ORIGINS = (process.env.ALLOWED_ORIGINS || 'http://localhost:5173')
   .map((s) => s.trim())
   .filter(Boolean);
 
-const SYSTEM_PROMPT =
-  process.env.SYSTEM_PROMPT ||
+// Coerce SYSTEM_PROMPT into a plain string, accepting either a bare string
+// or a legacy JSON object of the form {"role":"system","content":"..."}.
+function resolveSystemPrompt(raw) {
+  if (!raw) return null;
+  const trimmed = String(raw).trim();
+  if (trimmed.startsWith('{')) {
+    try {
+      const obj = JSON.parse(trimmed);
+      if (typeof obj?.content === 'string') return obj.content;
+    } catch {
+      // fall through and use as plain text
+    }
+  }
+  return trimmed;
+}
+
+const SYSTEM_PROMPT = resolveSystemPrompt(process.env.SYSTEM_PROMPT) ||
   'You are a compassionate mental-health companion. Listen carefully, respond briefly (1-2 sentences), and on the last line of your reply return ONLY a JSON object of the form {"mood_score": <0-10 integer>, "reply": "<your reply>"}. The reply field must contain ONLY the conversational text, with no JSON inside it.';
 
 const OPENROUTER_MODEL = process.env.OPENROUTER_MODEL || 'meta-llama/llama-3.2-3b-instruct';

@@ -23,5 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-# Environment files
-.env*
+# Environment files — ignore real ones, but allow .env.example templates
+.env
+.env.*
+!.env.example
